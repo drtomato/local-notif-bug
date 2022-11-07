@@ -1,0 +1,7 @@
+{
+  "name": "local-notif-bug",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
