@@ -1,20 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+   <ion-title>
+      Local Notifications Bug
+   </ion-title>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+   <p>Two notifications are scheduled; one with id=1 and one with id=Number.MAX_SAFE_INTEGER. When the pending notifications 
+      are retrieved from the plugin, we expect to see the same ids in the retrieved notifications. This fails on Android since
+      a Java Integer is used for storing the id. A Java Integer can hold 2^31-1 while a Javascript number can hold 2^53-1. 
+      Therefore, the Android implementation should be refactored to use Long instead of Integer for notification ids.
+   </p>
+   <div>
+      <div>Scheduled notification ids: {{scheduledNotifications}}</div>
+      <div>Pending notification ids: {{pendingNotifications}}</div>
+   </div>
 </ion-content>
